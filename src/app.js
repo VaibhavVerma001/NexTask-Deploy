@@ -4,6 +4,8 @@ import cookieParser from 'cookie-parser';
 import authRoutes from './routes/auth.routes.js';
 import taskRoutes from './routes/task.routes.js';
 import cors from 'cors';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
 const app = express();
 
@@ -15,6 +17,14 @@ app.use(cors({
   origin: 'http://localhost:5173',
   credentials: true
 }));
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, "../client/dist")))
+
+app.get("*", function(req,res){
+    res.sendFile(path.join(__dirname, "../client/dist/index.html"))
+})
 
 app.use('/api', authRoutes);
 app.use('/api', taskRoutes);
