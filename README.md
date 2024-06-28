@@ -93,6 +93,7 @@ Follow these steps to run the frontend locally:
 - **Js-cookie**: Reads cookies.
 - **Dayjs**: Manipulates dates in various formats.
 
+
 ### Files
 
 - **./Src/Api/auth.js**: Makes backend requests related to authentication.
