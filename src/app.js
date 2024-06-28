@@ -14,8 +14,10 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-  origin: '*',
-  credentials: true
+  origin: ['http://localhost:5173', 'https://next-tasker-deploy.onrender.com'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 const __filename = fileURLToPath(import.meta.url);
